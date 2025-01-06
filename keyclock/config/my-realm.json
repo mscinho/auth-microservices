@@ -1,0 +1,38 @@
+{
+  "realm": "my-realm",
+  "enabled": true,  
+  "clients": [
+    {
+      "clientId": "my-angular-app",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "redirectUris": [
+        "http://localhost:4200/*"
+      ],
+      "publicClient": true,
+      "accessType": "CONFIDENTIAL"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "adminpassword"
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "name": "user",
+      "composite": false,
+      "clientRole": false
+    }
+  ]
+}
