@@ -1,9 +1,9 @@
 {
-  "realm": "my-realm",
+  "realm": "SmartTech",
   "enabled": true,  
   "clients": [
     {
-      "clientId": "my-angular-app",
+      "clientId": "angular19-app",
       "enabled": true,
       "protocol": "openid-connect",
       "redirectUris": [
@@ -23,16 +23,18 @@
       "credentials": [
         {
           "type": "password",
-          "value": "adminpassword"
+          "value": "admin"
         }
       ]
     }
   ],
-  "roles": [
-    {
-      "name": "user",
-      "composite": false,
-      "clientRole": false
-    }
-  ]
+  "roles": {
+    "realm": [
+      {
+        "name": "user",
+        "composite": false,
+        "clientRole": false
+      }
+    ]
+  }
 }
