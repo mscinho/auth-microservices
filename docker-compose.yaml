@@ -1,0 +1,40 @@
+services:
+  keycloak:
+    build:
+      context: ./keyclock
+      dockerfile: Dockerfile
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - keycloak_data:/opt/keycloak/data/import
+    networks:
+      - auth-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - backend_data:/usr/src/app
+    environment:
+      NODE_ENV: development
+      KEYCLOAK_URL: http://keycloak:8080
+      KEYCLOAK_REALM: smart-tech
+      KEYCLOAK_CLIENT_ID: nestjs
+      KEYCLOAK_CLIENT_SECRET: G4qKildVsMeJE69nbv03iHA9H0mqaklj
+    command: npm run start:dev
+    networks:
+      - auth-network
+
+networks:
+  auth-network:
+    driver: bridge
+
+volumes:
+  keycloak_data:
+  backend_data:

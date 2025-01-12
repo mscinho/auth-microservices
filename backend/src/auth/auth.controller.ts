@@ -12,4 +12,10 @@ export class AuthController {
   async login(@Body() body: { username: string; password: string }) {
     return this.keycloakAuthService.authenticate(body.username, body.password);
   }
+
+  @Unprotected()
+  @Post('register')
+  async register(@Body() body: { firstName: string; lastName: string; username: string; password: string }) {
+    return this.keycloakAuthService.registerUser(body.firstName, body.lastName, body.username, body.password);
+  }
 }

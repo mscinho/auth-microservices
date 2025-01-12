@@ -4,7 +4,7 @@ Iniciar o serviço:
   docker compose up -d
 
 Parar os containers:
-  docker compose down
+  docker compose down -v
 
 Reconstruir após alterações:
   docker compose up -d --build

@@ -1,21 +1,24 @@
 {
-  "realm": "SmartTech",
+  "realm": "smart-tech",
   "enabled": true,  
   "clients": [
     {
-      "clientId": "angular19-app",
+      "clientId": "nestjs",
       "enabled": true,
       "protocol": "openid-connect",
-      "redirectUris": [
-        "http://localhost:4200/*"
-      ],
-      "publicClient": true,
-      "accessType": "CONFIDENTIAL"
+      "redirectUris": [ "/*" ],
+      "clientAuthenticatorType": "client-secret",
+      "secret": "G4qKildVsMeJE69nbv03iHA9H0mqaklj",
+      "publicClient": false,
+      "frontchannelLogout": true,
+      "directAccessGrantsEnabled": true,
+      "authorizationServicesEnabled": true
     }
   ],
   "users": [
     {
       "username": "admin",
+      "email": "admin@admin.com",
       "enabled": true,
       "emailVerified": true,
       "firstName": "Admin",
@@ -23,8 +26,12 @@
       "credentials": [
         {
           "type": "password",
-          "value": "admin"
+          "value": "admin",
+          "temporary": false
         }
+      ],
+      "realmRoles": [
+        "default-roles-smart-tech"
       ]
     }
   ],
